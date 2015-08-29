@@ -1,12 +1,16 @@
 <?php
 
-namespace Snowcap\BootstrapBundle\Form\Extension;
+namespace Leapt\BootstrapBundle\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class PrependAndAppendTypeExtension
+ * @package Leapt\BootstrapBundle\Form\Extension
+ */
 class PrependAndAppendTypeExtension extends AbstractTypeExtension
 {
     /**
@@ -20,13 +24,14 @@ class PrependAndAppendTypeExtension extends AbstractTypeExtension
     );
 
     /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver
-            ->setOptional($this->prependAndAppendOptions)
-            ->setAllowedTypes(array_combine($this->prependAndAppendOptions, array_fill(0, 4, 'string')));
+        $resolver->setDefined($this->prependAndAppendOptions);
+        foreach ($this->prependAndAppendOptions as $option) {
+            $resolver->setAllowedTypes($option, 'string');
+        }
     }
 
     /**
@@ -38,8 +43,8 @@ class PrependAndAppendTypeExtension extends AbstractTypeExtension
     {
         $view->vars['prepend'] = isset($options['prepend_text']) || isset($options['prepend_icon']);
         $view->vars['append'] = isset($options['append_text']) || isset($options['append_icon']);
-        foreach($this->prependAndAppendOptions as $option) {
-            if(isset($options[$option])) {
+        foreach ($this->prependAndAppendOptions as $option) {
+            if (isset($options[$option])) {
                 $view->vars[$option] = $options[$option];
             }
         }

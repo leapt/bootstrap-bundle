@@ -1,25 +1,19 @@
 <?php
-namespace Snowcap\BootstrapBundle\Twig\Extension;
+
+namespace Leapt\BootstrapBundle\Twig\Extension;
 
 use Symfony\Component\Form\Util\PropertyPath;
 
 /**
- * Created by JetBrains PhpStorm.
- * User: edwin
- * Date: 28/08/11
- * Time: 21:47
- * To change this template use File | Settings | File Templates.
+ * Class BootstrapExtension
+ * @package Leapt\BootstrapBundle\Twig\Extension
  */
-
-class BootstrapExtension extends \Twig_Extension {
+class BootstrapExtension extends \Twig_Extension
+{
     /**
      * @var \Twig_Environment
      */
     protected $environment;
-    /**
-     * {@inheritdoc}
-     */
-
 
     public function initRuntime(\Twig_Environment $environment)
     {
@@ -43,6 +37,6 @@ class BootstrapExtension extends \Twig_Extension {
 
     public function getName()
     {
-        return 'snowcap_bootstrap';
+        return 'leapt_bootstrap';
     }
 }

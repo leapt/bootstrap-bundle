@@ -1,13 +1,16 @@
 <?php
 
-namespace Snowcap\BootstrapBundle;
+namespace Leapt\BootstrapBundle;
 
+use Leapt\BootstrapBundle\DependencyInjection\Compiler\PaginatorCompilerPass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-use Snowcap\BootstrapBundle\DependencyInjection\Compiler\PaginatorCompilerPass;
-
-class SnowcapBootstrapBundle extends Bundle
+/**
+ * Class LeaptBootstrapBundle
+ * @package Leapt\BootstrapBundle
+ */
+class LeaptBootstrapBundle extends Bundle
 {
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container

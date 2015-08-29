@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    //TODO: cleanup - what follows below has been superseded by the snowcap-bootstrap.js file
+    //TODO: cleanup - what follows below has been superseded by the leapt-bootstrap.js file
 
     // Modal
     $('#modal').modal({show:false});

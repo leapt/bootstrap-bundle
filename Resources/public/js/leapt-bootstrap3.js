@@ -1,16 +1,17 @@
-var SnowcapBootstrap = (function() {
+var LeaptBootstrap = (function() {
     /**
      * Modal view
      *
      */
     var Modal = Backbone.View.extend({
         tagName: 'div',
-        className: 'modal hide fade',
+        className: 'modal fade',
         events: function() {
             return {
                 'submit form': 'submit',
                 'click a:not([href=#],[data-bootstrap=modal-change-location])': 'clickLink',
                 'click [data-bootstrap=modal-confirm]': 'confirm',
+                'hidden.bs.modal': 'close',
                 'hidden': function() {
                     this.$el.empty();
                 }
@@ -20,7 +21,9 @@ var SnowcapBootstrap = (function() {
          * Initialize
          *
          */
-        initialize: function() {
+        initialize: function(options) {
+            this.options = options || {};
+
             if(this.options.modalClass) {
                 this.$el.addClass(this.options.modalClass);
             }
@@ -30,7 +33,7 @@ var SnowcapBootstrap = (function() {
                 modalOptions.backdrop = this.options.backdrop;
             }
             this.$el.modal(modalOptions);
-            this.on('ui:modal:render', SnowcapCore.Form.collectionFactory);
+            this.on('ui:modal:render', LeaptCore.Form.collectionFactory);
 
             this.render();
         },
@@ -151,7 +154,7 @@ var SnowcapBootstrap = (function() {
                 options.modalClass = $modalTrigger.data('options-modal-class');
             }
             options.backdrop = $modalTrigger.data('options-modal-backdrop');
-            new SnowcapBootstrap.Modal(options);
+            new LeaptBootstrap.Modal(options);
         });
     };
 
@@ -163,6 +166,6 @@ var SnowcapBootstrap = (function() {
 
 (function($) {
 
-    SnowcapBootstrap.modalFactory();
+    LeaptBootstrap.modalFactory();
 
 })(jQuery);

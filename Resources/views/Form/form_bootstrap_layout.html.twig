@@ -157,7 +157,7 @@
     {% endif %}
 {% endblock field_help %}
 
-{% block snowcap_core_image_widget %}
+{% block leapt_core_image_widget %}
     {% if file_url is not null %}
         <img src="{{ asset(file_url) }}"/><br/>
     {% endif %}
@@ -170,7 +170,7 @@
     {% endif %}
 {% endblock %}
 
-{% block snowcap_core_video_widget %}
+{% block leapt_core_video_widget %}
     {{ block('form_widget') }}<br/>
     {% if value is not empty and provider is defined %}
         {% if provider == 'youtube' %}
@@ -185,7 +185,7 @@
     {% endif %}
 {% endblock %}
 
-{% block snowcap_core_sound_widget %}
+{% block leapt_core_sound_widget %}
     {{ block('form_widget') }}<br/>
     {%  if value is not empty %}
         {% if provider == 'soundcloud' %}
@@ -194,7 +194,7 @@
     {% endif %}
 {% endblock %}
 
-{% block snowcap_core_file_widget %}
+{% block leapt_core_file_widget %}
     {{ form_widget(form.file) }}
     {{ form_errors(form.file) }}
     {% if file_url is not null %}

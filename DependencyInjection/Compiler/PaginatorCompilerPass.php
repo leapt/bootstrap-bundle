@@ -1,25 +1,28 @@
 <?php
 
-namespace Snowcap\BootstrapBundle\DependencyInjection\Compiler;
+namespace Leapt\BootstrapBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class PaginatorCompilerPass implements CompilerPassInterface {
+/**
+ * Class PaginatorCompilerPass
+ * @package Leapt\BootstrapBundle\DependencyInjection\Compiler
+ */
+class PaginatorCompilerPass implements CompilerPassInterface
+{
     /**
-     * You can modify the container here before it is dumped to PHP code.
-     *
      * @param ContainerBuilder $container
      *
      * @api
      */
     public function process(ContainerBuilder $container)
     {
-        if (false === $container->hasDefinition('snowcap_core.twig_paginator')) {
+        if (false === $container->hasDefinition('leapt_core.twig_paginator')) {
             return;
         }
 
-        $definition = $container->getDefinition('snowcap_core.twig_paginator');
-        $definition->addMethodCall('setTemplate', array('SnowcapBootstrapBundle:Paginator:paginator_bootstrap_layout.html.twig'));
+        $definition = $container->getDefinition('leapt_core.twig_paginator');
+        $definition->addMethodCall('setTemplate', array('LeaptBootstrapBundle:Paginator:paginator_bootstrap_layout.html.twig'));
     }
 }
