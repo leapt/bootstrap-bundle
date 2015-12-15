@@ -24,7 +24,7 @@ class BootstrapExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('form_row_classes', [$this, 'getFormRowClasses'])
+            new \Twig_SimpleFunction('form_row_classes', array($this, 'getFormRowClasses'))
         );
     }
 
