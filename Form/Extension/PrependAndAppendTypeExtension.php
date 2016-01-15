@@ -3,6 +3,7 @@
 namespace Leapt\BootstrapBundle\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,12 +17,12 @@ class PrependAndAppendTypeExtension extends AbstractTypeExtension
     /**
      * @var array
      */
-    private $prependAndAppendOptions = array(
+    private $prependAndAppendOptions = [
         'prepend_text',
         'prepend_icon',
         'append_text',
         'append_icon',
-    );
+    ];
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
@@ -55,6 +56,6 @@ class PrependAndAppendTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return 'form';
+        return FormType::class;
     }
 }

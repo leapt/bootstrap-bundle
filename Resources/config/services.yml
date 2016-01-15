@@ -2,9 +2,9 @@ services:
     leapt_bootstrap.type_extension_help:
         class: Leapt\BootstrapBundle\Form\Extension\HelpTypeExtension
         tags:
-            - { name: form.type_extension, alias: form }
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
 
     leapt_bootstrap.type_extension_prepend_append:
         class: Leapt\BootstrapBundle\Form\Extension\PrependAndAppendTypeExtension
         tags:
-            - { name: form.type_extension, alias: form }
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
