@@ -9,7 +9,7 @@ var LeaptBootstrap = (function() {
         events: function() {
             return {
                 'submit form': 'submit',
-                'click a:not([href=#],[data-bootstrap=modal-change-location])': 'clickLink',
+                'click a:not([href="#"],[data-bootstrap=modal-change-location])': 'clickLink',
                 'click [data-bootstrap=modal-confirm]': 'confirm',
                 'hidden.bs.modal': 'close',
                 'hidden': function() {

@@ -1,27 +1,31 @@
 {% macro alert(text, type, title, close) %}
-<div class="alert{{ title|default('') is not empty ? ' alert-block' : '' }} alert-{{ type|default('warning') }}">
+<div class="alert{{ title|default('') is not empty ? ' alert-block' : '' }} alert-{{ type|default('warning') }} alert-dismissible">
     {% if close|default(false) %}
-        <a  href="#" class="close" data-dismiss="alert" >&times;</a>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     {% endif %}
     {% if title|default('') is not empty %}
-        <h4 class="alert-heading">{{ title }}</h4>
+        <h4>{{ title }}</h4>
     {% endif %}
-    {{ text | raw }}
+    {{ text|raw }}
 </div>
 {% endmacro %}
 
 {% macro modal(id, header, body, ok, cancel) %}
-<div class="modal fade" id="{{ id|default('modal') }}">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">×</a>
-    <h3>{{ header|default('Confirm') }}</h3>
-  </div>
-  <div class="modal-body">
-    <p>{{ body|default('Are you sure ?') }}</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn btn-primary" data-accept="modal">{{ ok|default('Ok') }}</a>
-    <a href="#" class="btn" data-dismiss="modal">{{ cancel|default('Cancel') }}</a>
-  </div>
+<div class="modal fade" id="{{ id|default('modal') }}" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{ header|default('Confirm') }}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ body|default('Are you sure ?') }}</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" data-accept="modal">{{ ok|default('Ok') }}</a>
+                <a href="#" class="btn btn-default" data-dismiss="modal">{{ cancel|default('Cancel') }}</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endmacro %}

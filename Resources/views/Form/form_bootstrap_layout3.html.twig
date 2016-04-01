@@ -155,7 +155,7 @@
 
 {% block leapt_core_image_widget %}
     {% if file_url is not null %}
-        <img src="{{ asset(file_url) }}"/><br/>
+        <br /><img src="{{ asset(file_url) }}"><br />
     {% endif %}
     {{ form_widget(form.file) }}
     {% if file_url is not null and allow_delete %}
