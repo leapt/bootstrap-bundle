@@ -111,6 +111,7 @@ var LeaptBootstrap = (function() {
          */
         close: function() {
             this.$el.modal('hide');
+            $('.modal-backdrop').remove();
             this.remove();
         },
         /**
@@ -133,7 +134,7 @@ var LeaptBootstrap = (function() {
          */
         renderBody: function(content) {
             this.$el.html(content);
-            this.$el.find('.modal-body').css('maxHeight', $(window).height() * 0.6);
+            this.$el.find('.modal-body').css('maxHeight', $(window).height() * 0.6).css('overflow', 'auto');
         }
     });
 
